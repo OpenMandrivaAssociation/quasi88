@@ -19,7 +19,7 @@ Needs ROM images in ~/.quasi88/rom. You can use the corresponding MESS rom set (
 %patch1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" make %{?jobs:-j%jobs} \
+CFLAGS="$RPM_OPT_FLAGS" make \
 %ifarch %ix86 x86_64 ia64 %arm
 LSB_FIRST=1
 %else
