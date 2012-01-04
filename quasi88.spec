@@ -7,6 +7,7 @@ Summary:      NEC PC-8801 Emulator
 Source0:      %name-%version.tgz
 Patch0:       %name-compile.patch
 Patch1:       %name-rpmlint.patch
+Patch2:       %name-Werror.patch
 BuildRequires: SDL-devel gcc-c++
 
 %description
@@ -16,6 +17,7 @@ Needs ROM images in ~/.quasi88/rom. You can use the corresponding MESS rom set (
 %setup
 %patch0 -b .config~
 %patch1 -p0 -b .rpmlint~
+%patch2 -p1 -b .Werror~
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" make \
