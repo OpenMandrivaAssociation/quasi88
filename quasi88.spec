@@ -1,21 +1,8 @@
-#
-# spec file for package spec (Version 2.0)
-#
-# Copyright (c) 2003 SuSE Linux AG, Nuernberg, Germany.
-# This file and all modifications and additions to the pristine
-# package are under the same license as the package itself.
-#
-# Please submit bugfixes or comments via http://www.suse.de/feedback/
-#
-
-# norootforbuild
-
 Name:         quasi88
-License:      COPYRIGHT
-Group:        unsorted
-Autoreqprov:  on
+License:      GPL
+Group:        Emulators
 Version:      0.6.3
-Release:      2.1
+Release:      %mkrel 1
 Summary:      NEC PC-8801 Emulator
 Source:       %name-%version.tgz
 Patch:        %name-%version.dif
@@ -42,11 +29,11 @@ cd tools
 make CFLAGS="$RPM_OPT_FLAGS"
 
 %install
-install -D -m 755 quasi88.sdl $RPM_BUILD_ROOT/usr/bin/quasi88
-install -m 755 tools/*88 $RPM_BUILD_ROOT/usr/bin
+install -D -m 755 quasi88.sdl $RPM_BUILD_ROOT%{_bindir}/quasi88
+install -m 755 tools/*88 $RPM_BUILD_ROOT%{_bindir}
 
 %files
 %defattr(-,root,root)
 %doc document/* *.ini *.rc tools/*.txt
-/usr/bin/*88
+%{_bindir}/*88
 
