@@ -4,7 +4,8 @@ Group:        Emulators
 Version:      0.6.3
 Release:      %mkrel 2
 Summary:      NEC PC-8801 Emulator
-Source0:      %name-%version.tgz
+URL:          http://www.117.ne.jp/~show/pc8801/pc88emu.html
+Source0:      http://www.117.ne.jp/~show/pc8801/%name-%version.tgz
 Patch0:       %name-compile.patch
 Patch1:       %name-rpmlint.patch
 Patch2:       %name-Werror.patch
