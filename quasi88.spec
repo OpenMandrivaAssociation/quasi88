@@ -16,7 +16,7 @@ Needs ROM images in ~/.quasi88/rom. You can use the corresponding MESS rom set (
 
 %prep
 %setup
-%patch0 -b .config~
+%patch0 -p1 -b .config~
 %patch1 -p0 -b .rpmlint~
 %patch2 -p1 -b .Werror~
 
