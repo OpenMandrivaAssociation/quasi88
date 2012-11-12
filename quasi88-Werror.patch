@@ -1,0 +1,31 @@
+--- quasi88-0.6.3/src/menu.c.ark	2012-01-04 18:16:01.246918861 +0100
++++ quasi88-0.6.3/src/menu.c	2012-01-04 18:16:23.944635100 +0100
+@@ -97,7 +97,7 @@ static	void	start_file_error_dialog( int
+   const t_menulabel *l = (drv<0) ? data_err_file : data_err_drive;
+ 
+   if( result==ERR_NO ) return;
+-  if( drv<0 ) sprintf( wk, GET_LABEL( l, result ) );
++  if( drv<0 ) sprintf( wk, "%s", GET_LABEL( l, result ) );
+   else        sprintf( wk, GET_LABEL( l, result ), drv+1 );
+ 
+   dialog_create();
+--- quasi88-0.6.3/src/z80-debug.c.ark	2012-01-04 18:17:20.523927761 +0100
++++ quasi88-0.6.3/src/z80-debug.c	2012-01-04 18:17:34.952747375 +0100
+@@ -1374,7 +1374,7 @@ int	z80_line_disasm( z80arch *z80, word
+   switch( Inst->type ){
+   case OP_NOTHING:
+     printf_head( z80, pc, 1 );
+-    printf( Inst->str );
++    printf( "%s", Inst->str );
+     return 1;
+ 
+   case OP_NUM_8:
+@@ -1407,7 +1407,7 @@ int	z80_line_disasm( z80arch *z80, word
+     switch( Inst->type ){
+     case OP_NOTHING:
+       printf_head( z80, pc, 2 );
+-      printf( Inst->str );
++      printf( "%s", Inst->str );
+       return 2;
+ 
+     case OP_UNEXIST:

@@ -1,0 +1,33 @@
+--- src/fmgen/fmgen.cpp
++++ src/fmgen/fmgen.cpp
+@@ -340,7 +340,8 @@
+ 	}
+ 	while (p < cltable + FM_CLENTS)
+ 	{
+-		*p++ = p[-512] / 2;
++		*p = p[-512] / 2;
++		p++;
+ 	}
+ 
+ //	for (i=0; i<13*256; i++)
+--- src/snddrv/src/sound/2203intf.h
++++ src/snddrv/src/sound/2203intf.h
+@@ -3,7 +3,7 @@
+ 
+ #include "ay8910.h"
+ 
+-#define MAX_2203 4
++#define MAX_2203 5
+ 
+ #define YM2203interface AY8910interface
+ 
+--- tools/knj2font88.c
++++ tools/knj2font88.c
+@@ -113,6 +113,6 @@
+     if( i & 0x80 ){ buf[6] = buf[7] |= 0x0f; }
+     if( fwrite( buf, sizeof(unsigned char), 8, out_fp )!=8 ) error(2,out_name);
+   }
+-
++  return 0;
+ };
+ 

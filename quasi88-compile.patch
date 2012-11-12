@@ -1,0 +1,119 @@
+--- quasi88-0.6.3/Makefile.config~	2007-05-16 16:36:46.000000000 +0200
++++ quasi88-0.6.3/Makefile	2012-01-04 17:54:26.307107835 +0100
+@@ -13,8 +13,8 @@
+ # X11版、SDL版のいずれかを指定します。不要な方をコメントアウトしてください。
+ 
+ 
+-X11_VERSION	= 1
+-# SDL_VERSION	= 1
++# X11_VERSION	= 1
++SDL_VERSION	= 1
+ 
+ 
+ #######################################################################
+@@ -28,7 +28,7 @@ X11_VERSION	= 1
+ #	ディレクトリが使用されます。
+ #	 ~/ は、QUASI88の起動時にホームディレクトリ（$HOME）に展開されます。
+ 
+-ROMDIR	= ~/quasi88/rom/
++ROMDIR	= ~/.quasi88/rom/
+ 
+ 
+ # DISK用ディレクトリを設定します
+@@ -38,7 +38,7 @@ ROMDIR	= ~/quasi88/rom/
+ #	ディレクトリが使用されます。
+ #	 ~/ は、QUASI88の起動時にホームディレクトリ（$HOME）に展開されます。
+ 
+-DISKDIR	= ~/quasi88/disk/
++DISKDIR	= ~/.quasi88/disk/
+ 
+ 
+ # TAPE用ディレクトリを設定します
+@@ -47,7 +47,7 @@ DISKDIR	= ~/quasi88/disk/
+ #	ディレクトリが使用されます。
+ #	 ~/ は、QUASI88の起動時にホームディレクトリ（$HOME）に展開されます。
+ 
+-TAPEDIR	= ~/quasi88/tape/
++TAPEDIR	= ~/.quasi88/tape/
+ 
+ 
+ # (X11)
+@@ -56,7 +56,7 @@ TAPEDIR	= ~/quasi88/tape/
+ #	    例えば、IRIX, AIX、MacOS X(PowerPC) などは、コメントアウトします。
+ #		    Intel 系の CPUを使った OS などは、このままにしておきます。
+ 
+-LSB_FIRST	= 1
++#LSB_FIRST	= 1
+ 
+ 
+ # (X11)
+@@ -95,8 +95,8 @@ HAVE_GETTIMEOFDAY = 1
+ #	FreeBSD にて USB joystick が使用できます。
+ #	( 環境によっては、コンパイルすらできないかもしれません )
+ 
+-JOYSTICK	= joy_nothing
+-# JOYSTICK	= joy_sdl
++# JOYSTICK	= joy_nothing
++JOYSTICK	= joy_sdl
+ # JOYSTICK	= joy_linux_usb
+ # JOYSTICK	= joy_bsd_usb
+ 
+@@ -179,9 +179,9 @@ USE_SOUND		= 1
+ #	動作確認が取れているのは、Freebsd と Linux のみです
+ 
+ #---------------------- FreeBSD
+-ARCH = freebsd
++#ARCH = freebsd
+ #---------------------- Linux
+-# ARCH = linux
++ARCH = linux
+ #---------------------- NetBSD
+ # ARCH = netbsd
+ #---------------------- OpenBSD
+@@ -215,7 +215,7 @@ ARCH = freebsd
+ # SOUND_ALSA		= 1
+ # SOUND_ARTS_TEIRA	= 1
+ # SOUND_ARTS_SMOTEK	= 1
+-# SOUND_SDL		= 1
++SOUND_SDL		= 1
+ # SOUND_WAVEOUT		= 1
+ 
+ 
+@@ -271,7 +271,7 @@ CC	= gcc
+ #	あります。PowerPC 系の gcc などがそうですが、この場合、-fsigned-char 
+ #	を指定します。
+ 
+-CFLAGS = -O2
++#CFLAGS = -O2
+ 
+ # gcc (PowerPC) での例
+ # CFLAGS = -O2 -fsigned-char
+@@ -331,7 +331,7 @@ LD	= $(CC) -Wl,-s
+ # インストール先ディレクトリの設定
+ #
+ 
+-BINDIR = /usr/local/bin
++BINDIR = /usr/bin
+ 
+ 
+ 
+@@ -436,8 +436,8 @@ else
+ 
+ # SDLバージョンでの設定
+ ifdef	SDL_VERSION
+-CFLAGS += -Isrc/SDL `$(SDL_CONFIG) --cflags`
+-LIBS   +=           `$(SDL_CONFIG) --libs`
++CFLAGS += -Isrc/SDL `$(SDL_CONFIG) --cflags` -DJOY_SDL
++LIBS   +=           `$(SDL_CONFIG) --libs` -lX11 -lm
+ 
+ ifdef	SUPPORT_DOUBLE
+ CFLAGS += -DSUPPORT_DOUBLE
+@@ -718,7 +718,7 @@ ifdef	X11_VERSION
+ OBJECT = X11/graph.o X11/wait.o X11/event.o X11/joystick.o X11/getconf.o X11/main.o
+ else
+ ifdef	SDL_VERSION
+-OBJECT = SDL/graph.o SDL/wait.o SDL/event.o SDL/getconf.o SDL/main.o
++OBJECT = SDL/graph.o SDL/wait.o SDL/event.o SDL/getconf.o SDL/main.o X11/joy-sdl.o
+ endif
+ endif
+ 
