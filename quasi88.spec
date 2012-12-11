@@ -39,3 +39,22 @@ install -m 755 tools/*88 $RPM_BUILD_ROOT%{_bindir}
 %doc document/* *.ini *.rc tools/*.txt
 %{_bindir}/*88
 
+
+
+%changelog
+* Wed Jan 04 2012 Bernhard Rosenkraenzer <bero@bero.eu> 0.6.3-2mdv2011.0
++ Revision: 755571
+- Use -p1 when applying patch0
+- Add URL to upstream sources in Source tag
+- Make it build with the standard -Werror flags
+- Fix build/linkage issues
+
+  + Zombie Ryushu <ryushu@mandriva.org>
+    - Bad patch
+    - Spec Cleanups
+    - Spec Cleanups
+    - imported package quasi88
+
+
+* Thu Nov 27 2008 - uli@suse.de
+- fixed bugs found by rpmlint
