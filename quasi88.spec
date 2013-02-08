@@ -2,7 +2,7 @@ Name:         quasi88
 License:      GPL
 Group:        Emulators
 Version:      0.6.3
-Release:      %mkrel 2
+Release:      3
 Summary:      NEC PC-8801 Emulator
 URL:          http://www.117.ne.jp/~show/pc8801/pc88emu.html
 Source0:      http://www.117.ne.jp/~show/pc8801/%name-%version.tgz
@@ -12,7 +12,8 @@ Patch2:       %name-Werror.patch
 BuildRequires: SDL-devel gcc-c++
 
 %description
-Needs ROM images in ~/.quasi88/rom. You can use the corresponding MESS rom set (pc88srl.zip).
+Needs ROM images in ~/.quasi88/rom. You can use the corresponding MESS rom set
+(pc88srl.zip).
 
 %prep
 %setup
@@ -31,8 +32,8 @@ cd tools
 make CFLAGS="$RPM_OPT_FLAGS"
 
 %install
-install -D -m 755 quasi88.sdl $RPM_BUILD_ROOT%{_bindir}/quasi88
-install -m 755 tools/*88 $RPM_BUILD_ROOT%{_bindir}
+install -D -m 755 quasi88.sdl %{buildroot}%{_bindir}/quasi88
+install -m 755 tools/*88 %{buildroot}%{_bindir}
 
 %files
 %defattr(-,root,root)
