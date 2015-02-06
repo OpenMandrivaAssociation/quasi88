@@ -2,7 +2,7 @@ Name:         quasi88
 License:      GPL
 Group:        Emulators
 Version:      0.6.3
-Release:      3
+Release:      4
 Summary:      NEC PC-8801 Emulator
 URL:          http://www.117.ne.jp/~show/pc8801/pc88emu.html
 Source0:      http://www.117.ne.jp/~show/pc8801/%name-%version.tgz
