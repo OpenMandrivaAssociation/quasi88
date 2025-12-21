@@ -9,6 +9,7 @@ Source0:      http://www.117.ne.jp/~show/pc8801/%name-%version.tgz
 Patch0:       %name-compile.patch
 Patch1:       %name-rpmlint.patch
 Patch2:       %name-Werror.patch
+BuildRequires:	make
 BuildRequires: SDL-devel gcc-c++
 
 %description
